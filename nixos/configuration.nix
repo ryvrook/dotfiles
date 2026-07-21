@@ -4,7 +4,7 @@ let
 in
 {
   imports = [
-    ./hardware.nix
+    ./hardware-configuration.nix
     (sources.agenix + "/modules/age.nix")
     ./modules/desktop.nix
     ./modules/greetd.nix

@@ -9,7 +9,8 @@ Stow packages (`fish/`, `niri/`, `tmux/`, ...) live at the repo root, one
 directory per app, mirroring `~` inside. Next to them:
 
     nixos/            NixOS config; configuration.nix is the entry point
-      hardware.nix    disks and kernel modules (tracked; UUIDs are not sensitive)
+      hardware-configuration.nix   disks and kernel modules, nixos-generate-config
+                      output plus resume device (tracked; UUIDs are not sensitive)
       local.nix       machine-local boot entries (untracked; recreate per machine)
       secret.nix      legacy password hash (untracked; only until agenix host key enrolled)
       eval.nix        eval-only entry used by CI
