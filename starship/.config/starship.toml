@@ -1,0 +1,18 @@
+add_newline = true
+command_timeout = 1000
+palette = "carbonfox"
+
+[palettes.carbonfox]
+accent = "#78a9ff"
+ok = "#25be6a"
+err = "#ee5396"
+
+[directory]
+style = "bold accent"
+
+[git_branch]
+style = "bold accent"
+
+[character]
+success_symbol = "[❯](ok)"
+error_symbol = "[❯](err)"
