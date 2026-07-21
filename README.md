@@ -52,7 +52,7 @@ All packages at once (never `stow */` - that would grab nixos/ and npins/):
 6. Flatpak: `flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo`
 7. Vesktop: settings are pre-seeded by stow. The AskFriday plugin is a custom
    Vencord user plugin and needs a manual Vencord dev install
-   (https://github.com/DevVoxel/AskFriday - see its README).
+   (https://github.com/ryvrook/AskFriday - see its README).
 
 ## Secrets (agenix)
 
