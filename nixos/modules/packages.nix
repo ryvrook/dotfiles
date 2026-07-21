@@ -38,6 +38,7 @@ in
     vulkan-tools
     mangohud
     # niri / noctalia backends
+    noctalia-shell
     xwayland-satellite
     brightnessctl
     cliphist
