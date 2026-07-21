@@ -1,0 +1,18 @@
+{
+  "auto_install_extensions": {
+    "nightfox": true,
+    "nix": true,
+    "toml": true
+  },
+  "theme": "Carbonfox - Opaque",
+  "vim_mode": false,
+  "telemetry": { "metrics": false, "diagnostics": false },
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_size": 14,
+  "ui_font_size": 15,
+  "tab_size": 2,
+  "format_on_save": "on",
+  "autosave": "on_focus_change",
+  "terminal": { "font_family": "JetBrainsMono Nerd Font" },
+  "auto_update": false
+}
