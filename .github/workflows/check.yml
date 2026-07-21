@@ -19,9 +19,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: sudo apt-get update && sudo apt-get install -y stow
-      # Dry-run all packages against a clean HOME (explicit list; never `*/`,
+      # Dry-run all packages against a clean target dir (runner $HOME ships a
+      # skeleton .bashrc that would conflict; explicit list; never `*/`,
       # which would grab nixos/ and npins/).
       - run: >
-          stow --no --verbose --target "$HOME"
+          stow --no --verbose --target "$(mktemp -d)"
           alacritty bash fish starship bat git gh ssh tmux nvim zed
           niri noctalia gtk desktop vesktop btop fastfetch mangohud
