@@ -1,0 +1,27 @@
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@v16
+      # Eval-only instantiation of the full system (no build).
+      - run: nix-instantiate nixos/eval.nix
+
+  stow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y stow
+      # Dry-run all packages against a clean HOME (explicit list; never `*/`,
+      # which would grab nixos/ and npins/).
+      - run: >
+          stow --no --verbose --target "$HOME"
+          alacritty bash fish starship bat git gh ssh tmux nvim zed
+          niri noctalia gtk desktop vesktop btop fastfetch mangohud
