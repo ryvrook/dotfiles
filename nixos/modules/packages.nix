@@ -12,7 +12,7 @@ in
     agenix-cli    # editing/rekeying secrets (bundles age)
     pkgs.stow     # applies the dotfiles
     pkgs.git
-    pkgs.nixfmt-rfc-style
+    pkgs.nixfmt
   ];
 
   users.users.ryv.packages = with pkgs; [
