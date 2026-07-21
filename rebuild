@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Non-flake rebuild: pins nixpkgs via npins, points nixos-config at this repo.
+# Usage: ./rebuild [switch|boot|test|dry-activate]   (default: switch)
+set -euo pipefail
+cd "$(dirname "$(readlink -f "$0")")"
+
+nixpkgs="$(nix-instantiate --eval --strict -A nixpkgs.outPath npins | tr -d '"')"
+
+sudo nixos-rebuild "${1:-switch}" \
+  -I nixpkgs="$nixpkgs" \
+  -I nixos-config="$PWD/nixos/configuration.nix"
