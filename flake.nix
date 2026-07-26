@@ -31,24 +31,25 @@
         ++ optionalLocalModule "NIXOS_LOCAL_CONFIG";
       };
 
-      ryv-vm = nixpkgs.lib.nixosSystem {
+      ryvVm = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [ ./nixos/vm.nix ];
       };
     in
     {
       nixosConfigurations = {
-        inherit ryv ryv-vm;
+        inherit ryv;
+        ryv-vm = ryvVm;
       };
 
       packages.${system} = {
         default = ryv.config.system.build.toplevel;
-        vm = ryv-vm.config.system.build.vm;
+        vm = ryvVm.config.system.build.vm;
       };
 
       apps.${system}.vm = {
         type = "app";
-        program = "${ryv-vm.config.system.build.vm}/bin/run-ryv-vm-vm";
+        program = "${ryvVm.config.system.build.vm}/bin/run-ryv-vm-vm";
       };
 
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt;

@@ -11,7 +11,7 @@ let
         substituteInPlace "$out/bin/niri-session" \
           --replace-fail \
           "systemctl --user import-environment" \
-          "systemctl --user import-environment PATH XDG_DATA_DIRS XDG_CONFIG_DIRS XDG_SESSION_TYPE XDG_CURRENT_DESKTOP"
+          "systemctl --user import-environment PATH"
       '';
 in
 {

@@ -31,5 +31,9 @@
     cores = 4;
     diskSize = 20480;
     graphics = true;
+    qemu.options = [
+      "-device virtio-vga-gl"
+      "-display gtk,gl=on"
+    ];
   };
 }
