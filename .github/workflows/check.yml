@@ -11,17 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@v16
-      # Eval-only instantiation of the full system (no build).
-      - run: nix-instantiate nixos/eval.nix
+      - run: nix flake check --no-build
 
   stow:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: sudo apt-get update && sudo apt-get install -y stow
-      # Dry-run all packages against a clean target dir (runner $HOME ships a
-      # skeleton .bashrc that would conflict; explicit list; never `*/`,
-      # which would grab nixos/ and npins/).
       - run: >
           stow --no --verbose --target "$(mktemp -d)"
           alacritty bash fish starship bat git gh ssh tmux nvim zed

@@ -1,11 +1,21 @@
 #!/usr/bin/env bash
-# Non-flake rebuild: pins nixpkgs via npins, points nixos-config at this repo.
 # Usage: ./rebuild [switch|boot|test|dry-activate]   (default: switch)
 set -euo pipefail
 cd "$(dirname "$(readlink -f "$0")")"
 
-nixpkgs="$(nix-instantiate --eval --strict -A nixpkgs.outPath npins | tr -d '"')"
+if [[ ! -f "$PWD/nixos/hardware-configuration.nix" ]]; then
+  echo "missing nixos/hardware-configuration.nix" >&2
+  echo "generate it with: sudo nixos-generate-config --show-hardware-config > nixos/hardware-configuration.nix" >&2
+  exit 1
+fi
 
-sudo nixos-rebuild "${1:-switch}" \
-  -I nixpkgs="$nixpkgs" \
-  -I nixos-config="$PWD/nixos/configuration.nix"
+export NIXOS_HARDWARE_CONFIG="$PWD/nixos/hardware-configuration.nix"
+preserved_env=NIXOS_HARDWARE_CONFIG
+
+if [[ -f "$PWD/nixos/local.nix" ]]; then
+  export NIXOS_LOCAL_CONFIG="$PWD/nixos/local.nix"
+  preserved_env+=,NIXOS_LOCAL_CONFIG
+fi
+
+sudo --preserve-env="$preserved_env" \
+  nixos-rebuild "${1:-switch}" --impure --flake "$PWD#ryv"

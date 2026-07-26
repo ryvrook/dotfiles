@@ -1,16 +1,10 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 let
-  sources = import ../../npins;
-  flakeCompat = src: (import sources.flake-compat { inherit src; }).defaultNix;
-  zen-browser =
-    (flakeCompat sources.zen-browser).packages.${pkgs.stdenv.hostPlatform.system}.default;
-  agenix-cli =
-    (flakeCompat sources.agenix).packages.${pkgs.stdenv.hostPlatform.system}.default;
+  zen-browser = inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   environment.systemPackages = [
-    agenix-cli    # editing/rekeying secrets (bundles age)
-    pkgs.stow     # applies the dotfiles
+    pkgs.stow # applies the dotfiles
     pkgs.git
     pkgs.nixfmt
   ];
@@ -27,7 +21,12 @@ in
     inkscape
     openshot-qt
     vesktop
-    (wrapOBS { plugins = with obs-studio-plugins; [ obs-vaapi obs-pipewire-audio-capture ]; })
+    (wrapOBS {
+      plugins = with obs-studio-plugins; [
+        obs-vaapi
+        obs-pipewire-audio-capture
+      ];
+    })
     # Gaming (steam/gamescope/gamemode system-side)
     prismlauncher
     wine
@@ -95,6 +94,5 @@ in
     k9s
     lazydocker
     cloudflared
-    claude-code
   ];
 }

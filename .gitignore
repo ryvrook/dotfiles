@@ -1,12 +1,11 @@
 # Nix build output
 result
 result-*
+*.qcow2
 
 # direnv
 .direnv/
 
-# Machine-local and sensitive (kept out of the repo)
-# nixos/secret.nix: legacy plaintext password hash (agenix replaces it; secrets/*.age ARE committed)
-# nixos/local.nix: machine-specific boot entries with disk identifiers
-nixos/secret.nix
+# Machine-local hardware and boot entries
+nixos/hardware-configuration.nix
 nixos/local.nix
