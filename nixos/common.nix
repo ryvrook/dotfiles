@@ -1,4 +1,19 @@
 { pkgs, ... }:
+let
+  niri =
+    pkgs.runCommand "${pkgs.niri.name}-session"
+      {
+        inherit (pkgs.niri) meta passthru;
+      }
+      ''
+        cp -a ${pkgs.niri} "$out"
+        chmod u+w "$out/bin/niri-session"
+        substituteInPlace "$out/bin/niri-session" \
+          --replace-fail \
+          "systemctl --user import-environment" \
+          "systemctl --user import-environment PATH XDG_DATA_DIRS XDG_CONFIG_DIRS XDG_SESSION_TYPE XDG_CURRENT_DESKTOP"
+      '';
+in
 {
   imports = [
     ./modules/desktop.nix
@@ -69,6 +84,8 @@
   };
 
   programs.dconf.enable = true;
+  programs.niri.package = niri;
+  services.displayManager.defaultSession = "niri";
 
   hardware.enableRedistributableFirmware = true;
 
@@ -89,10 +106,7 @@
   zramSwap.enable = true;
 
   programs.fish.enable = true;
-  programs.steam = {
-    enable = true;
-    gamescopeSession.enable = true;
-  };
+  programs.steam.enable = true;
   programs.gamescope.enable = true;
   programs.gamemode.enable = true;
   services.openssh.enable = true;

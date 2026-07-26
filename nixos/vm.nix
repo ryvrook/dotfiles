@@ -1,4 +1,8 @@
-{ lib, modulesPath, ... }:
+{
+  lib,
+  modulesPath,
+  ...
+}:
 {
   imports = [
     "${modulesPath}/virtualisation/qemu-vm.nix"
@@ -9,6 +13,11 @@
 
   users.users.ryv.initialPassword = "ryv";
   security.sudo.wheelNeedsPassword = false;
+
+  programs.steam.enable = lib.mkForce false;
+  programs.steam.gamescopeSession.enable = lib.mkForce false;
+  programs.gamescope.enable = lib.mkForce false;
+  programs.gamemode.enable = lib.mkForce false;
 
   services.fwupd.enable = lib.mkForce false;
   services.fstrim.enable = lib.mkForce false;
