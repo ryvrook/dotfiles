@@ -20,6 +20,7 @@
 
 [core]
 	pager = delta
+	sshCommand = ssh -o IdentityAgent=~/.1password/agent.sock
 
 [interactive]
 	diffFilter = delta --color-only

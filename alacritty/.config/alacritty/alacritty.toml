@@ -35,3 +35,8 @@ blue = "#78a9ff"
 magenta = "#be95ff"
 cyan = "#33b1ff"
 white = "#ffffff"
+
+[general]
+import = [
+  "~/.config/alacritty/themes/monokai_charcoal.toml"
+]

@@ -36,18 +36,6 @@ in
     lutris
     vulkan-tools
     mangohud
-    # niri / noctalia backends
-    noctalia-shell
-    xwayland-satellite
-    brightnessctl
-    cliphist
-    wl-clipboard
-    grim
-    slurp
-    satty
-    matugen
-    cava
-    playerctl
     # Terminal / editors (configs are stow-managed)
     alacritty
     tmux
@@ -69,12 +57,15 @@ in
     yazi
     btop
     fastfetch
+    claude-code
+    codex
     # File manager + viewers
     nautilus
     file-roller
     zathura
     imv
     pavucontrol
+    gparted
     # Theming (referenced by stow'd gtk settings)
     adw-gtk3
     papirus-icon-theme

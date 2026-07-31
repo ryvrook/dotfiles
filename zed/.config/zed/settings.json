@@ -1,10 +1,47 @@
 {
+  "title_bar": {
+    "show_menus": false,
+    "show_branch_status_icon": false,
+  },
+  "project_panel": {
+    "dock": "left",
+    "button": true,
+  },
+  "tabs": {
+    "file_icons": false,
+    "git_status": false,
+    "close_position": "right",
+  },
+  "status_bar": {
+    "show_active_file": false,
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry",
+    },
+    "claude-acp": {
+      "type": "registry",
+    },
+  },
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)",
+  },
+  "base_keymap": "VSCode",
   "auto_install_extensions": {
     "nightfox": true,
     "nix": true,
-    "toml": true
+    "toml": true,
   },
-  "theme": "Carbonfox - Opaque",
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "Ayu Dark",
+  },
   "vim_mode": false,
   "telemetry": { "metrics": false, "diagnostics": false },
   "buffer_font_family": "JetBrainsMono Nerd Font",
@@ -14,5 +51,5 @@
   "format_on_save": "on",
   "autosave": "on_focus_change",
   "terminal": { "font_family": "JetBrainsMono Nerd Font" },
-  "auto_update": false
+  "auto_update": false,
 }

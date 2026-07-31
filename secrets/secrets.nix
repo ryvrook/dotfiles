@@ -1,4 +1,4 @@
-# agenix rules file. Maps each .age secret to the keys allowed to decrypt it.
+# agenix rules file. Maps future .age secrets to the keys allowed to decrypt them.
 # Edit secrets from this directory:  cd secrets && agenix -e <name>.age
 # After adding/removing keys:        cd secrets && agenix --rekey
 #
@@ -16,10 +16,11 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIEHVaZdwY2YiGodSrMNlgt/yXRX8D8Wt+vJId+UFzxb"
   ];
 
-  # TODO(ryv): add the ryv host key here, then `agenix --rekey`.
+  # Add each NixOS host key here before creating secrets.
   #   "ssh-ed25519 AAAA... root@ryv"
   hosts = [ ];
 in
 {
-  "ryv-password.age".publicKeys = users ++ hosts;
+  # Example:
+  # "service-token.age".publicKeys = users ++ hosts;
 }

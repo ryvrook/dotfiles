@@ -19,7 +19,10 @@ in
 
   networking.hostName = "ryv-vm";
 
-  users.users.ryv.initialPassword = "ryv";
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "ryv";
+  };
   security.sudo.wheelNeedsPassword = false;
 
   programs.steam.enable = lib.mkForce false;

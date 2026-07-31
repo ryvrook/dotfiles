@@ -1,8 +1,13 @@
 {
-  description = "ryv NixOS system and dotfiles";
+  description = "Ryv NixOS system and dotfiles";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
@@ -25,6 +30,7 @@
       ryv = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
+          inputs.agenix.nixosModules.default
           ./nixos/configuration.nix
         ]
         ++ optionalLocalModule "NIXOS_HARDWARE_CONFIG"
@@ -33,7 +39,10 @@
 
       ryvVm = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
-        modules = [ ./nixos/vm.nix ];
+        modules = [
+          inputs.agenix.nixosModules.default
+          ./nixos/vm.nix
+        ];
       };
     in
     {

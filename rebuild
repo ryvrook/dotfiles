@@ -3,6 +3,20 @@
 set -euo pipefail
 cd "$(dirname "$(readlink -f "$0")")"
 
+action="${1:-switch}"
+case "$action" in
+  switch | boot | test | dry-activate | build) ;;
+  *)
+    echo "usage: $0 [switch|boot|test|dry-activate|build]" >&2
+    exit 2
+    ;;
+esac
+
+if [[ ! -e /etc/NIXOS ]]; then
+  echo "this wrapper must be run on NixOS" >&2
+  exit 1
+fi
+
 if [[ ! -f "$PWD/nixos/hardware-configuration.nix" ]]; then
   echo "missing nixos/hardware-configuration.nix" >&2
   echo "generate it with: sudo nixos-generate-config --show-hardware-config > nixos/hardware-configuration.nix" >&2
@@ -18,4 +32,4 @@ if [[ -f "$PWD/nixos/local.nix" ]]; then
 fi
 
 sudo --preserve-env="$preserved_env" \
-  nixos-rebuild "${1:-switch}" --impure --flake "$PWD#ryv"
+  nixos-rebuild "$action" --impure --flake "$PWD#ryv"

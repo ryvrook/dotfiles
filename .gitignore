@@ -9,3 +9,18 @@ result-*
 # Machine-local hardware and boot entries
 nixos/hardware-configuration.nix
 nixos/local.nix
+
+# Vesktop Cache Files
+vesktop/.config/vesktop/sessionData/
+vesktop/.config/vesktop/Code Cache/
+vesktop/.config/vesktop/Crashpad/
+vesktop/.config/vesktop/SingletonSocket
+vesktop/.config/vesktop/SingletonCookie
+vesktop/.config/vesktop/SingletonLock
+
+# SSH
+ssh/.ssh/
+
+# Secrets
+secrets/secrets.nix
+secrets/ryv-password.age

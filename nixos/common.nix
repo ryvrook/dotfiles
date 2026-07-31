@@ -1,23 +1,7 @@
-{ pkgs, ... }:
-let
-  niri =
-    pkgs.runCommand "${pkgs.niri.name}-session"
-      {
-        inherit (pkgs.niri) meta passthru;
-      }
-      ''
-        cp -a ${pkgs.niri} "$out"
-        chmod u+w "$out/bin/niri-session"
-        substituteInPlace "$out/bin/niri-session" \
-          --replace-fail \
-          "systemctl --user import-environment" \
-          "systemctl --user import-environment PATH"
-      '';
-in
+{ inputs, pkgs, ... }:
 {
   imports = [
     ./modules/desktop.nix
-    ./modules/greetd.nix
     ./modules/services.nix
     ./modules/packages.nix
   ];
@@ -40,16 +24,11 @@ in
 
   nixpkgs.hostPlatform = "x86_64-linux";
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [ "pnpm-10.29.2" ];
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
   nix.settings.auto-optimise-store = true;
-  nix.settings.extra-substituters = [ "https://noctalia.cachix.org" ];
-  nix.settings.extra-trusted-public-keys = [
-    "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
-  ];
   nix.gc = {
     automatic = true;
     dates = "weekly";
@@ -57,6 +36,9 @@ in
   };
 
   users.mutableUsers = true;
+  # Preserve an existing password if the account is already present. A newly
+  # created account intentionally has no preset password; initialize it locally
+  # with `passwd` after the first activation.
   users.users.ryv = {
     isNormalUser = true;
     description = "ryv";
@@ -84,18 +66,8 @@ in
   };
 
   programs.dconf.enable = true;
-  programs.niri.package = niri;
-  services.displayManager.defaultSession = "niri";
 
   hardware.enableRedistributableFirmware = true;
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gnome
-      pkgs.xdg-desktop-portal-gtk
-    ];
-  };
 
   security.polkit.enable = true;
 
@@ -106,6 +78,9 @@ in
   zramSwap.enable = true;
 
   programs.fish.enable = true;
+  environment.systemPackages = [
+    inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
+  ];
   programs.steam.enable = true;
   programs.gamescope.enable = true;
   programs.gamemode.enable = true;
@@ -133,5 +108,5 @@ in
     noto-fonts-cjk-sans
   ];
 
-  system.stateVersion = "26.11";
+  system.stateVersion = "26.05";
 }
