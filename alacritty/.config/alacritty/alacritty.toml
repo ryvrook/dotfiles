@@ -1,42 +1,98 @@
+# [window]
+# opacity = 1.0
+
+# [font]
+# size = 12
+
+# [font.normal]
+# family = "JetBrainsMono Nerd Font"
+
+# [colors.primary]
+# background = "#161616"
+# foreground = "#f2f4f8"
+# dim_foreground = "#b6b8bb"
+
+# [colors.cursor]
+# text = "#161616"
+# cursor = "#f2f4f8"
+
+# [colors.normal]
+# black = "#282828"
+# red = "#ee5396"
+# green = "#25be6a"
+# yellow = "#08bdba"
+# blue = "#78a9ff"
+# magenta = "#be95ff"
+# cyan = "#33b1ff"
+# white = "#dfdfe0"
+
+# [colors.bright]
+# black = "#484848"
+# red = "#ee5396"
+# green = "#46c880"
+# yellow = "#08bdba"
+# blue = "#78a9ff"
+# magenta = "#be95ff"
+# cyan = "#33b1ff"
+# white = "#ffffff"
+
+# [general]
+#   live_config_reload = true
+#   import = [
+#    "../dotfiles/alacritty/themes/monokai_charcoal.toml"
+#  ]
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
+
+
 [window]
-opacity = 1.0
+opacity = 0.90
+blur = true
+padding = { x = 6, y = 6 }
+dynamic_padding = true
+decorations = "Buttonless"
 
 [font]
-size = 12
+size = 13.0
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
+style = "Regular"
 
-[colors.primary]
-background = "#161616"
-foreground = "#f2f4f8"
-dim_foreground = "#b6b8bb"
-
-[colors.cursor]
-text = "#161616"
-cursor = "#f2f4f8"
-
-[colors.normal]
-black = "#282828"
-red = "#ee5396"
-green = "#25be6a"
-yellow = "#08bdba"
-blue = "#78a9ff"
-magenta = "#be95ff"
-cyan = "#33b1ff"
-white = "#dfdfe0"
-
-[colors.bright]
-black = "#484848"
-red = "#ee5396"
-green = "#46c880"
-yellow = "#08bdba"
-blue = "#78a9ff"
-magenta = "#be95ff"
-cyan = "#33b1ff"
-white = "#ffffff"
+[cursor]
+style = { shape = "Block", blinking = "On" }
 
 [general]
-import = [
-  "~/.config/alacritty/themes/monokai_charcoal.toml"
-]
+live_config_reload = true
+# import = [
+#     "~/.config/alacritty/themes/tokyo_night.toml"
+# ]
+
+[colors.primary]
+background = '#000000'
+foreground = '#FFFFFF'
+
+# Normal Colours
+[colors.normal]
+black   = '#1a1a1a'
+red     = '#f4005f'
+green   = '#98e024'
+yellow  = '#fa8419'
+blue    = '#9d65ff'
+magenta = '#f4005f'
+cyan    = '#58d1eb'
+white   = '#c4c5b5'
+
+# Bright Colours
+[colors.bright]
+black   = '#625e4c'
+red     = '#f4005f'
+green   = '#98e024'
+yellow  = '#e0d561'
+blue    = '#9d65ff'
+magenta = '#f4005f'
+cyan    = '#58d1eb'
+white   = '#f6f6ef'

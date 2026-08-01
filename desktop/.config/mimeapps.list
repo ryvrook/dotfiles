@@ -10,3 +10,4 @@ image/jpeg=imv.desktop
 image/gif=imv.desktop
 inode/directory=org.gnome.Nautilus.desktop
 x-scheme-handler/discord=vesktop.desktop
+x-scheme-handler/claude-cli=claude-code-url-handler.desktop

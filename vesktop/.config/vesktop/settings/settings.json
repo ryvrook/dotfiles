@@ -11,7 +11,8 @@
         },
         "CallTimer": {
             "enabled": true,
-            "showSeconds": true
+            "showSeconds": true,
+            "format": "stopwatch"
         },
         "CopyFileContents": {
             "enabled": true
@@ -67,13 +68,14 @@
             "enabled": true,
             "collapseDeleted": false,
             "deleteStyle": "text",
-            "ignoreBots": false,
+            "ignoreBots": true,
             "ignoreSelf": false,
             "ignoreUsers": "",
             "ignoreChannels": "",
             "ignoreGuilds": "",
             "logEdits": true,
-            "logDeletes": true
+            "logDeletes": true,
+            "inlineEdits": true
         },
         "NoTypingAnimation": {
             "enabled": true
@@ -109,12 +111,14 @@
             "showModView": true
         },
         "SilentMessageToggle": {
-            "enabled": true
+            "enabled": true,
+            "persistState": false
         },
         "SilentTyping": {
             "enabled": true,
             "isEnabled": true,
-            "showIcon": false
+            "showIcon": true,
+            "contextMenu": true
         },
         "SpotifyControls": {
             "enabled": true,
@@ -606,6 +610,6 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1785540194273
+        "settingsSyncVersion": 1785547581589
     }
 }

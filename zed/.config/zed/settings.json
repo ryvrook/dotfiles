@@ -29,7 +29,7 @@
   "icon_theme": {
     "mode": "dark",
     "light": "Zed (Default)",
-    "dark": "Zed (Default)",
+    "dark": "Material Icon Theme",
   },
   "base_keymap": "VSCode",
   "auto_install_extensions": {
