@@ -15,4 +15,8 @@
   boot.loader.limine.style.interface.brandingColor = "ffffff";
 
   networking.hostName = "ryv";
+
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
+  '';
 }

@@ -4,3 +4,7 @@ end
 
 # Initialize starship prompt
 starship init fish | source
+
+# Alias
+abbr --add cls clear
+abbr --add cd.. cd ..
