@@ -66,6 +66,7 @@ in
     imv
     pavucontrol
     gparted
+    localsend
     # Theming (referenced by stow'd gtk settings)
     adw-gtk3
     papirus-icon-theme
