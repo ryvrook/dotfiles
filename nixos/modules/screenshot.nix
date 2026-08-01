@@ -36,7 +36,23 @@ let
         --early-exit
     '';
   };
+
+  # COSMIC's custom-shortcut can be unreliable, so the Print binding
+  # launches this through gtk-launch (needs gtk3 on PATH) instead of spawning directly.
+  desktopItem = pkgs.makeDesktopItem {
+    name = "screenshot-satty";
+    desktopName = "Screenshot (satty)";
+    exec = "${screenshot-satty}/bin/screenshot-satty";
+    icon = "camera-photo";
+    terminal = false;
+    categories = [ "Utility" ];
+    noDisplay = true;
+  };
 in
 {
-  environment.systemPackages = [ screenshot-satty ];
+  environment.systemPackages = [
+    screenshot-satty
+    desktopItem
+    pkgs.gtk3 # provides gtk-launch, used by the COSMIC Print shortcut
+  ];
 }

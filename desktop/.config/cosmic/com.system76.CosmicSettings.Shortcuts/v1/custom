@@ -87,5 +87,5 @@
     (
         modifiers: [],
         key: "Print",
-    ): Spawn("screenshot-satty"),
+    ): Spawn("gtk-launch screenshot-satty"),
 }

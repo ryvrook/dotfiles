@@ -108,6 +108,23 @@ I do not use `stow */`, since that would also try to treat directories like
 If Stow finds a file that an app already created, I move or delete that file
 after checking it, then run Stow again.
 
+### COSMIC screenshot shortcut
+
+The `desktop` package ships my COSMIC keyboard shortcuts, including the `Print`
+binding that runs `screenshot-satty` (grim + slurp + satty) instead of the
+built-in COSMIC screenshot. COSMIC creates these files itself, so the first
+time I apply them I remove its copies and re-stow:
+
+```sh
+rm ~/.config/cosmic/com.system76.CosmicSettings.Shortcuts/v1/custom \
+   ~/.config/cosmic/com.system76.CosmicSettings.Shortcuts/v1/system_actions
+stow desktop
+```
+
+COSMIC only reads the shortcuts on session start, so I log out and back in for
+`Print` to pick up the new binding. This removal step is one-time; afterwards
+the files are symlinks and repo edits apply directly.
+
 Flatpak is enabled by the NixOS config. I add Flathub once:
 
 ```sh
