@@ -76,6 +76,7 @@ in
     gopls
     pyright
     # Dev
+    bun
     gcc
     gnumake
     python3
