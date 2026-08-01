@@ -4,6 +4,7 @@
     ./modules/desktop.nix
     ./modules/services.nix
     ./modules/packages.nix
+    ./modules/screenshot.nix
   ];
 
   networking.networkmanager.enable = true;
