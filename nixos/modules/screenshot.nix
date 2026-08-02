@@ -32,6 +32,8 @@ let
       # Annotate, then on save write to $final and copy to the clipboard.
       satty --filename "$tmp" \
         --output-filename "$final" \
+        --floating-hack \
+        --no-window-decoration \
         --copy-command wl-copy \
         --save-after-copy \
         --actions-on-enter save-to-file,save-to-clipboard,exit \
