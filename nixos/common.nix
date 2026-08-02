@@ -68,6 +68,8 @@
 
   programs.dconf.enable = true;
 
+  programs.nix-ld.enable = true;
+
   hardware.enableRedistributableFirmware = true;
 
   security.polkit.enable = true;
