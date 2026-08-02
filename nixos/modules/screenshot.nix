@@ -33,7 +33,9 @@ let
       satty --filename "$tmp" \
         --output-filename "$final" \
         --copy-command wl-copy \
-        --early-exit
+        --save-after-copy \
+        --actions-on-enter save-to-file,save-to-clipboard,exit \
+        --actions-on-escape exit
     '';
   };
 
