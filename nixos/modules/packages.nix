@@ -1,6 +1,7 @@
 { inputs, pkgs, ... }:
 let
   zen-browser = inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  claude-desktop = pkgs.callPackage ../packages/claude-desktop.nix { };
 in
 {
   environment.systemPackages = [
@@ -57,6 +58,7 @@ in
     yazi
     btop
     fastfetch
+    claude-desktop
     claude-code
     codex
     # File manager + viewers
