@@ -37,9 +37,7 @@
   };
 
   users.mutableUsers = true;
-  # Preserve an existing password if the account is already present. A newly
-  # created account intentionally has no preset password; initialize it locally
-  # with `passwd` after the first activation.
+  # Preserve an existing password if the account is already present.
   users.users.ryv = {
     isNormalUser = true;
     description = "ryv";

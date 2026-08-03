@@ -21,7 +21,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  { "EdenEast/nightfox.nvim" },        -- carbonfox colorscheme
+  { "EdenEast/nightfox.nvim" }, -- carbonfox colorscheme
   { "christoomey/vim-tmux-navigator" },
 })
 
