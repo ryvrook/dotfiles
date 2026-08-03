@@ -24,6 +24,7 @@ gh/.config/gh/hosts.yml
 
 # SSH
 ssh/.ssh/
+ssh/.ssh/config
 
 # Secrets
 secrets/secrets.nix
