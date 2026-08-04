@@ -83,7 +83,7 @@
     inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
   programs.steam.enable = true;
-  programs.gamescope.enable = true;
+  programs.gamescope.enable = false;
   programs.gamemode.enable = true;
   programs.gpu-screen-recorder.enable = true;
   services.openssh.enable = true;
