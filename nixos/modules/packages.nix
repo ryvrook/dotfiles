@@ -69,6 +69,7 @@ in
     zathura
     imv
     pavucontrol
+    easyeffects
     gparted
     localsend
     # Theming (referenced by stow'd gtk settings)
