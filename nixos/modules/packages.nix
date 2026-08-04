@@ -91,5 +91,6 @@ in
     k9s
     lazydocker
     cloudflared
+    playwright
   ];
 }
