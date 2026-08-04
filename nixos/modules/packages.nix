@@ -37,6 +37,8 @@ in
     lutris
     vulkan-tools
     mangohud
+    # Screen Recording
+    gpu-screen-recorder-gtk
     # Terminal / editors (configs are stow-managed)
     alacritty
     tmux

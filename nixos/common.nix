@@ -85,6 +85,7 @@
   programs.steam.enable = true;
   programs.gamescope.enable = true;
   programs.gamemode.enable = true;
+  programs.gpu-screen-recorder.enable = true;
   services.openssh.enable = true;
   services.openssh.settings = {
     PasswordAuthentication = false;
