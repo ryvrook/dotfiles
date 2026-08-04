@@ -9,3 +9,4 @@ starship init fish | source
 abbr --add cls clear
 abbr --add cd.. cd ..
 abbr --add --set-cursor='!' gcc "git clone git@github.com:ryvrook/!"
+abbr --add ignore --set-cursor 'echo "%" >> (git rev-parse --git-path info/exclude)'
